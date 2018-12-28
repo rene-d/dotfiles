@@ -31,7 +31,7 @@ brew install graphviz
 brew install gist
 brew install toilet figlet jp2a sl
 brew install libpst exiv2 youtube-dl
-brew install zeromq protobuf
+brew install zeromq czmq protobuf
 brew install jq
 ````
 
