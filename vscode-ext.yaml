@@ -1,0 +1,15 @@
+# <publisherName>.<extensionName>
+extensions:
+  - ms-python.python
+  - ms-vscode.cpptools
+  - MS-CEINTL.vscode-language-pack-fr
+  - formulahendry.code-runner
+  - goessner.mdmath
+  - slevesque.vscode-hexdump
+  - twxs.cmake
+  - vector-of-bool.cmake-tools
+  - DotJoshJohnson.xml
+  - redhat.vscode-yaml
+  - zxh404.vscode-proto3
+  - waderyan.gitblame
+  - jebbs.plantuml
