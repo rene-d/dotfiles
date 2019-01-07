@@ -74,4 +74,7 @@ if [[ "$(uname -m)" != arm* ]]; then
     python3 -c 'import requests, yaml; print("\n".join("code --install-extension {}".format(i) for i in yaml.load(open("vscode-ext.yaml").read())["extensions"]))' | sh
     
     sudo apt install -y python3-rope
+    
+    # nota: GitHub Desktop
+    # https://github.com/shiftkey/desktop/releases/download/release-1.5.1-linux2/GitHubDesktop-linux-1.5.1-linux2.deb
 fi
