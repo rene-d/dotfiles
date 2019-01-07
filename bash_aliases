@@ -7,6 +7,9 @@ alias ll='ls -lF'
 alias la='ls -alF'
 alias tree='tree -C'
 
+alias open='gio open'
+alias github='/opt/GitHubDesktop/desktop'
+
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 # export PS1='\[\033[01;32m\]\h:\[\033[01;34m\]\W \u\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 export GIT_PS1_SHOWDIRTYSTATE=1
