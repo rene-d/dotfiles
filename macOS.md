@@ -21,7 +21,7 @@ brew cask install xnviewmp
 ## Installation du reste
 
 ````bash
-brew install cmake cscope python3 node cloc boost gcc ghc
+brew install cmake cscope python3 node cloc boost gcc ghc clang-format
 brew install vim wget bash sqlite dos2unix htop watch
 brew install gnu-tar httpie tig bash-completion bash
 brew install macvim

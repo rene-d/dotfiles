@@ -14,7 +14,7 @@ sudo apt install -y \
     vim vim-addon-manager vim-fugitive vim-ctrlp \
     figlet toilet sl \
     git git-gui tig \
-    build-essential gdb clang lldb valgrind cppcheck \
+    build-essential gdb clang clang-format lldb valgrind cppcheck \
     cmake cmake-curses-gui cmake-doc \
     cscope cloc graphviz \
     libboost-all-dev \
