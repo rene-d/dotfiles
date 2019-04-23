@@ -10,6 +10,7 @@ alias la='ls -Gla'
 alias tree='tree -C'
 
 alias top='top -o cpu -O time -s 2 -n 30'
+alias cfmt='clang-format -i -style="{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0 }"'
 
 #shopt -s globstar
 export HISTSIZE=20000

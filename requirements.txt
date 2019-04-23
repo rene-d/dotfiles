@@ -11,7 +11,7 @@ mccabe
 mpmath
 numba
 numpy
-pytest
+pytest>=3.6
 pytest-cov
 pytest-mock
 pytest-pythonpath
@@ -29,3 +29,11 @@ pyzmq
 pandas
 tqdm
 rope
+click
+humanfriendly
+black
+tox
+codecov
+protobuf
+isort
+mypy
