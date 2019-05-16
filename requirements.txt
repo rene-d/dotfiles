@@ -37,3 +37,6 @@ codecov
 protobuf
 isort
 mypy
+folium
+geopandas
+Pillow
