@@ -21,7 +21,7 @@ brew cask install xnviewmp
 ## Installation du reste
 
 ````bash
-brew install cmake cscope python3 node cloc boost gcc ghc clang-format
+brew install cmake cscope python3 node cloc boost gcc ghc clang-format meson
 brew install vim wget bash sqlite dos2unix htop watch
 brew install gnu-tar httpie tig bash-completion bash
 brew install macvim
@@ -30,9 +30,12 @@ brew install pari
 brew install graphviz
 brew install gist
 brew install toilet figlet jp2a sl
-brew install libpst exiv2 youtube-dl
+brew install libpst exiv2
 brew install zeromq czmq protobuf
 brew install jq
+brew install gpg
+brew install gpsbabel
+brew install vagrant-completion
 ````
 
 ## Installation packages Python3
