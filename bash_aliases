@@ -6,6 +6,7 @@ export EDITOR=vim
 alias ll='ls -lF'
 alias la='ls -alF'
 alias tree='tree -C'
+alias cls='clear && echo -ne "\033c\033[3J"'
 
 alias open='gio open'
 alias github='/opt/GitHubDesktop/desktop'
