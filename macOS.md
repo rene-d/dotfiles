@@ -36,6 +36,7 @@ brew install jq
 brew install gpg
 brew install gpsbabel
 brew install vagrant-completion
+brew install watch iftop
 ````
 
 ## Installation packages Python3

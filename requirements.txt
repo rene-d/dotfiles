@@ -40,3 +40,8 @@ mypy
 folium
 geopandas
 Pillow
+bitarray
+twine
+bandersnatch
+flake8-executable
+flask
