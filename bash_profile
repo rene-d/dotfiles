@@ -26,9 +26,13 @@ export HISTSIZE=20000
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 # export PS1='\[\033[01;32m\]\h:\[\033[01;34m\]\W \u\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
-export GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM="auto"
+
+export GOPATH=${HOME}/go
+export PATH=$PATH:${GOPATH//://bin:}/bin
 
 config_git_alias()
 {

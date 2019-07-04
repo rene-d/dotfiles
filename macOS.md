@@ -37,6 +37,17 @@ brew install gpg
 brew install gpsbabel
 brew install vagrant-completion
 brew install watch iftop
+
+# zsh
+brew install zsh
+
+# Nerd fonts
+# https://github.com/ryanoasis/nerd-fonts
+brew tap homebrew/cask-fonts
+brew cask install font-hack-nerd-font
+
+# command-line replacements
+
 ````
 
 ## Installation packages Python3
