@@ -11,7 +11,9 @@ export TERM="xterm-256color"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
+
 ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh virtualenv dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs)
@@ -172,7 +174,6 @@ vim()
     if [ $n -eq 0 ]; then
         $e
     elif [ $n -eq 1 ]; then
-        shift
         $e $@
     elif [ ! -e $arg[1] ]; then
         echo -e "\033[1;31mError:\033[0m file \033[1;36m$arg[1]\033[0m does not exist"
