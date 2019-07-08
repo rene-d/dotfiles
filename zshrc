@@ -109,30 +109,32 @@ compinit
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
-alias ls='colorls'
-alias ll='colorls -l'
-alias la='colorls -la'
+# note: ESC-h calls run-help
+unalias run-help
+autoload run-help
 
-# handy aliases
 export EDITOR=vim
-alias tree='tree -C'
-alias top='top -o cpu -O time -s 2 -n 30'
 
 # private tools
 [ -d $HOME/.local/bin ] && export PATH="$PATH:$HOME/.local/bin"
 
-# private aliases
-[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
-
 export GOPATH=${HOME}/go
 export PATH=$PATH:${GOPATH//://bin:}/bin
+
+# handy aliases
+alias ls='lsd'
+alias ll='lsd -l'
+alias la='lsd -la'
+
+alias tree='tree -C'
+alias top='top -o cpu -O time -s 2 -n 30'
 
 alias gg='git grep -n'
 alias ff='find . -name'
 alias e='code'
 
+# private aliases
+[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 
 # wrapper à Visual Studio Code pour accepter les arguments du genre "CHEMIN:LIGNE:COLONNE:"
 code()
@@ -142,7 +144,7 @@ code()
     if [ "${1:0:1}" = - ]; then
         $e $@
     else
-        local args=""
+        args=()
         for i in $@; do
             typeset -a a
             local a=(${(@s/:/)1})
@@ -150,10 +152,10 @@ code()
             shift
 
             if [ $n -eq 1 ]; then
-                args="$args $a[1]"
+                args+=("$a[1]")
             elif [ $n -ge 2 ]; then
                 if [ -s $a[1] ]; then
-                    args="$args -g $a[1]:$a[2]:$a[3]"
+                    args+=(-g "$a[1]:$a[2]:$a[3]")
                 else
                     echo -e "\033[1;31mError:\033[0m file \033[1;36m$a[1]\033[0m does not exist - ignored"
                 fi

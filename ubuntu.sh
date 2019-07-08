@@ -20,7 +20,8 @@ sudo apt install -y \
     libboost-all-dev \
     libzmq3-dev libczmq-dev \
     protobuf-c-compiler protobuf-compiler \
-    nodejs npm
+    nodejs npm \
+    fonts-powerline
     
 if [[ "$(uname -m)" == amd64 ]]; then
     sudo apt install -y \
@@ -34,6 +35,10 @@ fi
 
 echo "----------------------- Others -----------------------"
 
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom \
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
 sudo gem install gist
 # vim-addon-manager install fugitive
 
@@ -46,7 +51,7 @@ echo "----------------------- Python 3 -----------------------"
 
 # system site-packages
 sudo apt install -y \
-    python3-pip python3-venv \
+    python3-dev python3-pip python3-venv \
     python3-requests python3-requests-cache python3-yaml python3-toml python3-flake8 \
     python3-numpy python3-matplotlib python3-scipy \
     python3-zmq python3-protobuf python3-scapy \
