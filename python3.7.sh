@@ -1,6 +1,6 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
-version=3.7.3
+version=3.7.4
 
 echo "----------------------- Python ${version} -----------------------"
 
@@ -26,7 +26,7 @@ pip3 install -U pip
 
 if [[ "$(cat -v /sys/firmware/devicetree/base/model 2>/dev/null)" =~ "Raspberry Pi"* ]]; then
     # the Pi isn't powerful enough to compile math libraries
-    pip3 install -U -r requirements-pi.txt
+    pip3 install -U -r pizero-requirements.txt
 else
     # install favorite packages
     pip3 install -U -r requirements.txt

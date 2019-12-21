@@ -20,7 +20,8 @@ requests
 requests-cache
 scikit-learn
 scipy
-virtualenv
+canvasvg
+#virtualenv
 scapy
 simplekml
 lxml
@@ -45,3 +46,4 @@ twine
 bandersnatch
 flake8-executable
 flask
+asciichartpy

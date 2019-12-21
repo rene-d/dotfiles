@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/renedevichi/.oh-my-zsh"
@@ -77,7 +77,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git)
+plugins=(docker git rsync tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,41 +90,31 @@ compinit
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # note: ESC-h calls run-help
 unalias run-help
 autoload run-help
 
-export EDITOR=vim
+# prevent zsh to print an error when no match can be found
+unsetopt nomatch
 
-# private tools
-[ -d $HOME/.local/bin ] && export PATH="$PATH:$HOME/.local/bin"
+# don't share history
+unsetopt share_history
+
+export EDITOR=vim       # nano is for kids
+unset LESS		# prevent grep to launch less
 
 export GOPATH=${HOME}/go
 export PATH=$PATH:${GOPATH//://bin:}/bin
 
 # handy aliases
-alias ls='lsd'
-alias ll='lsd -l'
-alias la='lsd -la'
+if (( $+commands[lsd] )); then
+    alias ls='lsd'
+    alias ll='lsd -l'
+    alias la='lsd -la'
+else
+    alias ll='ls -l'
+    alias la='ls -la'
+fi
 
 alias tree='tree -C'
 alias top='top -o cpu -O time -s 2 -n 30'
@@ -132,14 +122,19 @@ alias top='top -o cpu -O time -s 2 -n 30'
 alias gg='git grep -n'
 alias ff='find . -name'
 alias e='code'
+alias enter_docker='docker run --rm -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh'
+unalias gp  # gp is PARI/GP, not 'git push'
+
+# private tools
+[ -d $HOME/.local/bin ] && export PATH="$PATH:$HOME/.local/bin"
 
 # private aliases
 [ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 
-# wrapper à Visual Studio Code pour accepter les arguments du genre "CHEMIN:LIGNE:COLONNE:"
+# Visual Studio Code wrapper that accepts arguments like "FILENAME:LINE:COLUMN:"
 code()
 {
-    local e=$(/usr/bin/which code)
+    local e=$(whence -p code)
 
     if [ "${1:0:1}" = - ]; then
         $e $@
@@ -165,10 +160,10 @@ code()
     fi
 }
 
-# wrapper à vim pour accepter les arguments du genre "CHEMIN:LIGNE:COLONNE:"
+# vim wrapper that accepts argument like "FILENAME:LINE:COLUMN:"
 vim()
 {
-    local e=$(/usr/bin/which vim)
+    local e=$(whence -p vim)
     typeset -a arg
     local arg=(${(@s/:/)1})
     local n=${#arg[@]}
@@ -183,4 +178,16 @@ vim()
         shift
         $e $arg[1] +$arg[2] $@
     fi
+}
+
+
+upgrade_env()
+{
+    pushd $__p9k_root_dir
+    git pull --force --verbose
+    popd
+
+    upgrade_oh_my_zsh
+
+    brew upgrade
 }
